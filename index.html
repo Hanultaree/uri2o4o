@@ -1,0 +1,173 @@
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <style type="text/css">
+	*{margin:0;padding:0px;list-style:none;text-decoration:none;}
+	body{padding:30px; font-size:20px;}
+	.container{border:5px solid gray;background:lightblue;padding:20px;width:600px;height:600px;text-align:center;}
+	input,button{font-size:20px; text-align:center;}
+	
+	input{margin:10px;}
+  </style>
+
+<script type="text/javascript">
+var data = new Array; var table = new Array; var tzum="";
+
+    $(function () {
+        $("#upload").bind("click", function () {
+            var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.csv|.txt)$/;
+            if (regex.test($("#fileUpload").val().toLowerCase())) {
+                if (typeof (FileReader) != "undefined") {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        table.push('<script type="text/javascript">var data=[');
+                        var rows = e.target.result.split('\n');
+                        for (var i = 0; i < rows.length; i++) {
+
+							table.push('[');
+                            var cells = rows[i].split(',');
+                            if (cells.length > 1) {
+                                for (var j = 0; j < cells.length; j++) {
+
+                                    table.push('"');
+                                    table.push(cells[j].trim());
+									if (j == cells.length-1){ 
+										table.push('"');
+									}else{
+										table.push('",');
+									}
+                                }
+								if (i == rows.length-1){ 
+									table.push(']');
+								}else{
+									table.push('],');
+								}
+                            }
+                        }
+							table.push(']');
+
+for (k=0; k<table.length; k++) { tzum = tzum + table[k];}
+
+						$("#dvCSV").empty();
+                        $("#dvCSV").append(tzum);
+                    }
+                    reader.readAsText($("#fileUpload")[0].files[0]);
+                } else {
+                    alert("This browser does not support HTML5.");
+                }
+            } else {
+                alert("Please upload a valid CSV file.");
+            }
+        });
+    });
+
+</script>
+
+
+<script type="text/javascript">
+
+   //--■■■■■■■■■■■■■■■■■음악 __Xplayer.js■■■■■■■■■■■■■■■■■■
+
+var selm = ""; var seln = "";  var a = null; 
+
+var inde = null;
+var vind = "";
+
+	$( function() {
+		$( 'button#submit1' ).click( function() {
+			$('#player').remove();
+			var inde = $( 'input#idx' ).val();
+			var n = $( 'input#vn' ).val();
+
+//			selm = ytbm[inde][1];
+			selm = data[inde][n];
+			musbox();
+		} );
+	} );
+
+	$( function() {
+		$( 'button#submit2' ).click( function() {
+			$('#player').remove();
+			var vind = $( 'input#vid' ).val();
+			selm = vind;
+			musbox();
+		} );
+	} );
+
+//================ 음악 재생 player ==========
+
+ function musbox(){
+    $('.container').append('<div id="player"></div>');
+
+seln=selm
+
+    var tag = document.createElement("script");
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    // HTML 문서가 모두 준비되면
+    $(function () {
+        onYouTubeIframeAPIReady();
+    });
+ };
+
+   // 영상의 세부정보를 player 변수에 담는다.
+   function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+              height : '280'
+            , width : '500'
+            , videoId : selm
+            , playerVars: {
+                'autoplay': 1                     // 자동재생
+               , 'loop' : 1                         // 반복 0 : off, 1 : on
+               , 'playlist' : seln                 // 반복 playlist
+               , 'cc_load_policy' : 0           // 자막 0 : on, 1 : off
+               , 'controls': 1                     // 동영상 플레이어 컨트롤 표기
+               , 'disablekb' : 0                  // 키보드 컨트롤 사용 중지
+            }
+            , events: {
+                'onReady' : playVideo
+            }
+        });
+    };
+
+    // 재생
+    function playVideo() {player.playVideo();};
+    // 일시정지
+    function pauseVideo() {player.pauseVideo();};
+    // 종료
+    function stopVideo() {player.stopVideo();};
+    // 음소거 On / Off
+    function volumeMute() {
+        // 음소거
+        if(player.isMuted() == true) {player.unMute(); jQuery("#volumeMute").val("음소거");}
+        // 음소거 해제
+        else if(player.isMuted() == false) {player.mute(); jQuery("#volumeMute").val("음소거 해제");}
+    };
+    // 볼륨 조절
+    function soundControl(number) { player.setVolume(number); };
+
+
+  </script>  
+ </head>
+ <body>
+<input type="file" id="fileUpload" placeholder="m100_age80.csv"/>
+<input type="button" id="upload" value="Upload" />
+<div id="dvCSV">
+</div>
+<hr />
+<div class="container">
+		<h2>YOUTUBE VIDEO 재생 TESTER</h2><br>
+		<p> index no. : <input type="number" id="idx"> <button id="submit1"> indexNo 재생</button> </p>
+		<p> vid no. : <input type="number" id="vn"> (vid1: 2, vid2: 4) <br> </p>
+		<p> video. Id. : <input type="text" id="vid"> <button id="submit2"> video Id 재생</button><br> ( 32si5cfrCNc, QYxyV2XC7Gc, vFWRbhxDI0I )<br><br> </p>
+
+</div>
+        
+    </body>
+</html>
+
+
