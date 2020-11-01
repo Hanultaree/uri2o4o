@@ -17,8 +17,6 @@ var seln = "";  var titln = ""; var a=0; var b=5;
 selm = "FQRrFVZAbs0";
 seln = "FQRrFVZAbs0,FQRrFVZAbs0,MRrXRlVd0P0,0fqtesY3guw,4WQwW6FrDGc,jPFrHYXYxak,otzVrS5Ml64";
 
-window.onload = function(){
-  function musbox(){
 	var tag = document.createElement("script");
     tag.src = "https://www.youtube.com/iframe_api";
     var firstScriptTag = document.getElementsByTagName('script')[0];
@@ -26,6 +24,9 @@ window.onload = function(){
 
 		// 영상의 정보를 담을 player 전역 변수 선언
 		var player = "";
+		
+window.onload = function(){
+  function musbox(){
 
     $(function () {
         onYouTubeIframeAPIReady();
