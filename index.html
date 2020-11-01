@@ -14,20 +14,25 @@
 
 var selm = ""; var titlm = ""; var h = '280'; var w = '500';
 var seln = "";  var titln = ""; var a=0; var b=5;
-selm = "MRrXRlVd0P0";
+selm = "FQRrFVZAbs0";
 seln = "FQRrFVZAbs0,FQRrFVZAbs0,MRrXRlVd0P0,0fqtesY3guw,4WQwW6FrDGc,jPFrHYXYxak,otzVrS5Ml64";
 
-    $(function () {
-        onYouTubeIframeAPIReady();
-	});
-
-    var tag = document.createElement("script");
+window.onload = function(){
+  function musbox(){
+	var tag = document.createElement("script");
     tag.src = "https://www.youtube.com/iframe_api";
     var firstScriptTag = document.getElementsByTagName('script')[0];
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 		// 영상의 정보를 담을 player 전역 변수 선언
 		var player = "";
+
+    $(function () {
+        onYouTubeIframeAPIReady();
+	});
+  };
+  musbox();
+};
 
 function onYouTubeIframeAPIReady(){
         player = new YT.Player('player', {
@@ -49,7 +54,6 @@ function onYouTubeIframeAPIReady(){
             }
         });
 }
-
 
 function onPlayerStateChange(event) {   // 현재 동영상 재생 종료됬을 경우
 	if (event.data == YT.PlayerState.ENDED) {   // 1초뒤에 다음 영상 실행
