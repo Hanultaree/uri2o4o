@@ -31,10 +31,11 @@ seln = "UWCMaAPNzm4,sBWesVezIrc,FQRrFVZAbs0,MRrXRlVd0P0,0fqtesY3guw,4WQwW6FrDGc,
           width: w,
           videoId: selm,
           playerVars: {
-			 	 'autoplay': 1                     // 자동재생
-			   , 'loop' : 1                         // 반복 0 : off, 1 : on
-			   , 'playlist' : seln                 // 반복 playlist
-		  },
+		  'autoplay': 1                     // 자동재생
+		, 'loop' : 1                         // 반복 0 : off, 1 : on
+		, 'playlist' : seln                 // 반복 playlist
+		, 'mute': 1			  // N.B. here the mute settings.
+	  },
           events: {
             'onReady': onPlayerReady,
  //            'onStateChange': onPlayerStateChange,
