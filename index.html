@@ -8,6 +8,7 @@
   <body>
     <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
     <div id="player"></div>
+    <button id="unmute"> 음악on </button>
 
     <script>
 	var selm = ""; var titlm = ""; var h = '280'; var w = '500';
@@ -67,7 +68,11 @@ seln = "UWCMaAPNzm4,sBWesVezIrc,FQRrFVZAbs0,MRrXRlVd0P0,0fqtesY3guw,4WQwW6FrDGc,
       function stopVideo() {
         player.stopVideo();
       }
-
+	  // Unmute
+      $('button#unmute').click( function() {
+        player.unMute();	      
+      });
+	    	    
 	</script>
   </body>
 </html>
