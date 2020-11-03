@@ -49,11 +49,6 @@ function fread(fn){
 	});
     });
 };
- 
-	$(function (){
-		setTimeout(musbox(null,5), 2000);
-	});
-
 
    //--■■■■■■■■■■■■■■■■■음악 __Xplayer.js■■■■■■■■■■■■■■■■■■
 var ytbm = new Array;
@@ -124,6 +119,10 @@ var seln = "";  var titln = ""; var a = 0; var b = 0;
 	  // Unmute
       $('button#unmute').click( function() {
         player.unMute();	      
+      });
+ 
+      $(function (){
+        setTimeout(musbox(null,5), 2000);
       });
 
 /*var ytbm = [
