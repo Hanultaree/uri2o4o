@@ -62,7 +62,6 @@ var seln = "";  var titln = ""; var a = 0; var b = 0;
 	if (a==null){a = Math.floor(Math.random() * ytbm.length);}
 	selm = ytbm[a][1];
 	titlm = ytbm[a][3] +" - "+ ytbm[a][4];
-	console.log('a: ' + a + ' ytbm.length: ' + ytbm.length + ' b: ' + b + ' title: ' + titlm);
 
 	if (b==1){seln=selm}
 	else{
@@ -74,6 +73,7 @@ var seln = "";  var titln = ""; var a = 0; var b = 0;
 		seln=seln+ytbm[a+b][1];
 		titln=titln+ytbm[k+a][3] +" - "+ ytbm[k+a][4];
 	}
+	console.log('a: ' + a + ' ytbm.length: ' + ytbm.length + ' b: ' + b + ' title: ' + titlm);
  };
 
 //================ 음악 재생 player ==========
