@@ -51,10 +51,14 @@ function fread(fn){
 };
 
    //--■■■■■■■■■■■■■■■■■음악 __Xplayer.js■■■■■■■■■■■■■■■■■■
-var ytbm = new Array; setTimeout(ytbm = ytbm1, 1000);
 var selm = ""; var titlm = ""; var h = '280'; var w = '500';
 var seln = "";  var titln = ""; var a = 0; var b = 0;
-
+		
+  var ytbm = $.map(ytbm1, function(element, index) {
+   	  if (index < ytbm1.length) {
+  	 	return [element]
+  	  };
+  });
 //================ 음악 재생 playlist ==========
  function musbox(a,b){
 	selm = ""; titlm = ""; seln = ""; titln = "";
