@@ -15,8 +15,6 @@
     <div id="player"></div>
 
 	<script type="text/javascript">
-var ytbm = new Array;
-ytbm = [];
 		
 $(function (){
     fread("skds");
@@ -62,21 +60,20 @@ function fread(fn){
 var selm = ""; var titlm = ""; var h = '280'; var w = '500';
 var seln = "";  var titln = ""; var a = 0; var b = 0;
 
-//================ 음악 재생 player ==========
+//================ 음악 재생 playlist ==========
  function musbox(a,b){
 	selm = ""; titlm = ""; seln = ""; titln = "";
 
 	if (a==null){a = Math.floor(Math.random() * ytbm.length);}
 	selm = ytbm[a][1];
 	titlm = ytbm[a][3] +" - "+ ytbm[a][4];
-	//	    h = '1';   w = '1';
 
 	if (b==1){seln=selm}
 	else{
 		for (k=1;k<b ; k++){
 			if (k+a==ytbm.length){a=a-ytbm.length;}
-				seln=seln+ytbm[k+a][1]+",";
-				titln=titln+ytbm[k+a][3] +" - "+ ytbm[k+a][4]+"<br/>";
+			seln=seln+ytbm[k+a][1]+",";
+			titln=titln+ytbm[k+a][3] +" - "+ ytbm[k+a][4]+"<br/>";
 		}
 		seln=seln+ytbm[a+b][1];
 		titln=titln+ytbm[k+a][3] +" - "+ ytbm[k+a][4];
@@ -108,7 +105,7 @@ var seln = "";  var titln = ""; var a = 0; var b = 0;
 	  },
           events: {
             'onReady': onPlayerReady,
-			'onError' : onPlayerError
+	    'onError': onPlayerError
           }
         });
       }
